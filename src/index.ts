@@ -1,5 +1,5 @@
 // import type { Core } from '@strapi/strapi';
-
+console.log("Hello from the plugin!");
 export default {
   /**
    * An asynchronous register function that runs before
