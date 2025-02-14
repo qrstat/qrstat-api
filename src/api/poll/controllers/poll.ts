@@ -15,14 +15,31 @@ export default factories.createCoreController(
 
       const { data } = ctx.request.body;
 
-      const entity = await strapi.entityService.create("api::poll.poll", {
+      const poll = await strapi.entityService.create("api::poll.poll", {
         data: {
           ...data,
           userId: user.id,
         },
       });
 
-      return ctx.send(entity);
+      const answerOptions = await Promise.all([
+        strapi.entityService.create("api::answer-option.answer-option", {
+          data: {
+            text: "Yes",
+            type: "affirmative",
+            poll: poll.id,
+          },
+        }),
+        strapi.entityService.create("api::answer-option.answer-option", {
+          data: {
+            text: "No",
+            type: "negative",
+            poll: poll.id,
+          },
+        }),
+      ]);
+
+      return ctx.send({ poll, answerOptions });
     },
 
     async find(ctx) {

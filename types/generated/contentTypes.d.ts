@@ -369,6 +369,39 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAnswerOptionAnswerOption
+  extends Struct.CollectionTypeSchema {
+  collectionName: "answer_options";
+  info: {
+    description: "";
+    displayName: "Answer-Option";
+    pluralName: "answer-options";
+    singularName: "answer-option";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::answer-option.answer-option"
+    > &
+      Schema.Attribute.Private;
+    poll: Schema.Attribute.Relation<"manyToOne", "api::poll.poll">;
+    publishedAt: Schema.Attribute.DateTime;
+    text: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<["affirmative", "negative"]>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    uuid: Schema.Attribute.String & Schema.Attribute.Unique;
+  };
+}
+
 export interface ApiPollPoll extends Struct.CollectionTypeSchema {
   collectionName: "polls";
   info: {
@@ -381,6 +414,10 @@ export interface ApiPollPoll extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    answer_options: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::answer-option.answer-option"
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
@@ -908,6 +945,7 @@ declare module "@strapi/strapi" {
       "admin::transfer-token": AdminTransferToken;
       "admin::transfer-token-permission": AdminTransferTokenPermission;
       "admin::user": AdminUser;
+      "api::answer-option.answer-option": ApiAnswerOptionAnswerOption;
       "api::poll.poll": ApiPollPoll;
       "plugin::content-releases.release": PluginContentReleasesRelease;
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction;

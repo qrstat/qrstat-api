@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "answer_options",
+  "info": {
+    "singularName": "answer-option",
+    "pluralName": "answer-options",
+    "displayName": "Answer-Option",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "uuid": {
+      "type": "string",
+      "unique": true
+    },
+    "text": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "affirmative",
+        "negative"
+      ]
+    },
+    "poll": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::poll.poll",
+      "inversedBy": "answer_options"
+    }
+  }
+}

@@ -27,6 +27,12 @@
     "userId": {
       "type": "integer",
       "required": true
+    },
+    "answer_options": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::answer-option.answer-option",
+      "mappedBy": "poll"
     }
   }
 }
