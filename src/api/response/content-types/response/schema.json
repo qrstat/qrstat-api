@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "responses",
+  "info": {
+    "singularName": "response",
+    "pluralName": "responses",
+    "displayName": "Response",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "uuid": {
+      "type": "string",
+      "unique": true
+    },
+    "poll": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::poll.poll",
+      "inversedBy": "responses"
+    },
+    "answer_option": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::answer-option.answer-option"
+    },
+    "responderId": {
+      "type": "string",
+      "unique": true
+    }
+  }
+}

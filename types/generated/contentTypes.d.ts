@@ -426,11 +426,47 @@ export interface ApiPollPoll extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<"oneToMany", "api::poll.poll"> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    responses: Schema.Attribute.Relation<"oneToMany", "api::response.response">;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private;
     userId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    uuid: Schema.Attribute.String & Schema.Attribute.Unique;
+  };
+}
+
+export interface ApiResponseResponse extends Struct.CollectionTypeSchema {
+  collectionName: "responses";
+  info: {
+    description: "";
+    displayName: "Response";
+    pluralName: "responses";
+    singularName: "response";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    answer_option: Schema.Attribute.Relation<
+      "oneToOne",
+      "api::answer-option.answer-option"
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::response.response"
+    > &
+      Schema.Attribute.Private;
+    poll: Schema.Attribute.Relation<"manyToOne", "api::poll.poll">;
+    publishedAt: Schema.Attribute.DateTime;
+    responderId: Schema.Attribute.String & Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private;
     uuid: Schema.Attribute.String & Schema.Attribute.Unique;
   };
 }
@@ -947,6 +983,7 @@ declare module "@strapi/strapi" {
       "admin::user": AdminUser;
       "api::answer-option.answer-option": ApiAnswerOptionAnswerOption;
       "api::poll.poll": ApiPollPoll;
+      "api::response.response": ApiResponseResponse;
       "plugin::content-releases.release": PluginContentReleasesRelease;
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction;
       "plugin::i18n.locale": PluginI18NLocale;
