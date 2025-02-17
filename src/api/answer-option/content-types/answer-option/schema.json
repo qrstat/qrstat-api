@@ -30,7 +30,7 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::poll.poll",
-      "inversedBy": "answer_options"
+      "inversedBy": "answerOptions"
     }
   }
 }

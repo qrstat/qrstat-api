@@ -414,7 +414,7 @@ export interface ApiPollPoll extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    answer_options: Schema.Attribute.Relation<
+    answerOptions: Schema.Attribute.Relation<
       "oneToMany",
       "api::answer-option.answer-option"
     >;

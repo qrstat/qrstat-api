@@ -28,16 +28,16 @@
       "type": "integer",
       "required": true
     },
-    "answer_options": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::answer-option.answer-option",
-      "mappedBy": "poll"
-    },
     "responses": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::response.response",
+      "mappedBy": "poll"
+    },
+    "answerOptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::answer-option.answer-option",
       "mappedBy": "poll"
     }
   }
