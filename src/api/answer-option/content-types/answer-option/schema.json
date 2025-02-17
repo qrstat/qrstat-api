@@ -31,6 +31,10 @@
       "relation": "manyToOne",
       "target": "api::poll.poll",
       "inversedBy": "answerOptions"
+    },
+    "userId": {
+      "type": "integer",
+      "required": true
     }
   }
 }

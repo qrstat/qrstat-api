@@ -28,6 +28,7 @@ export default factories.createCoreController(
             text: "Yes",
             type: "affirmative",
             poll: poll.id,
+            userId: user.id,
           },
         }),
         strapi.entityService.create("api::answer-option.answer-option", {
@@ -35,6 +36,7 @@ export default factories.createCoreController(
             text: "No",
             type: "negative",
             poll: poll.id,
+            userId: user.id,
           },
         }),
       ]);

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-02-17T15:20:25.032Z"
+    "x-generation-date": "2025-02-17T15:31:29.391Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -3015,6 +3015,9 @@
         ],
         "properties": {
           "data": {
+            "required": [
+              "userId"
+            ],
             "type": "object",
             "properties": {
               "uuid": {
@@ -3040,6 +3043,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "userId": {
+                "type": "integer"
               },
               "locale": {
                 "type": "string"
@@ -3099,6 +3105,9 @@
       },
       "AnswerOption": {
         "type": "object",
+        "required": [
+          "userId"
+        ],
         "properties": {
           "id": {
             "type": "number"
@@ -3197,6 +3206,9 @@
                               "type": "string"
                             }
                           }
+                        },
+                        "userId": {
+                          "type": "integer"
                         },
                         "createdAt": {
                           "type": "string",
@@ -3627,6 +3639,9 @@
               }
             }
           },
+          "userId": {
+            "type": "integer"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -3908,6 +3923,9 @@
                                 "type": "string"
                               }
                             }
+                          },
+                          "userId": {
+                            "type": "integer"
                           },
                           "createdAt": {
                             "type": "string",
@@ -4597,6 +4615,9 @@
                               "type": "string"
                             }
                           }
+                        },
+                        "userId": {
+                          "type": "integer"
                         },
                         "createdAt": {
                           "type": "string",
