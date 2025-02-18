@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-02-17T15:31:29.391Z"
+    "x-generation-date": "2025-02-18T13:36:07.095Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -3020,9 +3020,6 @@
             ],
             "type": "object",
             "properties": {
-              "uuid": {
-                "type": "string"
-              },
               "text": {
                 "type": "string"
               },
@@ -3115,9 +3112,6 @@
           "documentId": {
             "type": "string"
           },
-          "uuid": {
-            "type": "string"
-          },
           "text": {
             "type": "string"
           },
@@ -3135,9 +3129,6 @@
                 "type": "number"
               },
               "documentId": {
-                "type": "string"
-              },
-              "uuid": {
                 "type": "string"
               },
               "title": {
@@ -3181,9 +3172,6 @@
                           "type": "number"
                         },
                         "documentId": {
-                          "type": "string"
-                        },
-                        "uuid": {
                           "type": "string"
                         },
                         "text": {
@@ -3719,9 +3707,6 @@
             ],
             "type": "object",
             "properties": {
-              "uuid": {
-                "type": "string"
-              },
               "title": {
                 "type": "string"
               },
@@ -3828,9 +3813,6 @@
           "documentId": {
             "type": "string"
           },
-          "uuid": {
-            "type": "string"
-          },
           "title": {
             "type": "string"
           },
@@ -3861,9 +3843,6 @@
                       "type": "number"
                     },
                     "documentId": {
-                      "type": "string"
-                    },
-                    "uuid": {
                       "type": "string"
                     },
                     "title": {
@@ -3898,9 +3877,6 @@
                             "type": "number"
                           },
                           "documentId": {
-                            "type": "string"
-                          },
-                          "uuid": {
                             "type": "string"
                           },
                           "text": {
@@ -4546,9 +4522,6 @@
               "documentId": {
                 "type": "string"
               },
-              "uuid": {
-                "type": "string"
-              },
               "title": {
                 "type": "string"
               },
@@ -4590,9 +4563,6 @@
                           "type": "number"
                         },
                         "documentId": {
-                          "type": "string"
-                        },
-                        "uuid": {
                           "type": "string"
                         },
                         "text": {

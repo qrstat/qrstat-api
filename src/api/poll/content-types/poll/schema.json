@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "uuid": {
-      "type": "string",
-      "required": false,
-      "unique": true
-    },
     "title": {
       "type": "string",
       "required": true
