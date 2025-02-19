@@ -12,10 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "uuid": {
-      "type": "string",
-      "unique": true
-    },
     "poll": {
       "type": "relation",
       "relation": "manyToOne",
