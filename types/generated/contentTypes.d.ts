@@ -447,7 +447,7 @@ export interface ApiResponseResponse extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    answer_option: Schema.Attribute.Relation<
+    answerOption: Schema.Attribute.Relation<
       "oneToOne",
       "api::answer-option.answer-option"
     >;

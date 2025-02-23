@@ -18,7 +18,7 @@
       "target": "api::poll.poll",
       "inversedBy": "responses"
     },
-    "answer_option": {
+    "answerOption": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::answer-option.answer-option"
