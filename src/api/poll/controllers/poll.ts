@@ -18,7 +18,7 @@ export default factories.createCoreController(
       const { affirmativeText, negativeText, ...pollData } = data;
 
       if (!affirmativeText || !negativeText) {
-        return ctx.badRequest("Title and description are required.");
+        return ctx.badRequest("Affirmative and negative texts are required");
       }
 
       const poll = await strapi.entityService.create("api::poll.poll", {
