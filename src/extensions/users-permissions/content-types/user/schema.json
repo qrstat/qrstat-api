@@ -9,7 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -70,6 +70,17 @@
       "relation": "oneToOne",
       "target": "api::poll.poll",
       "mappedBy": "owner"
+    },
+    "maxPolls": {
+      "type": "integer",
+      "default": 3,
+      "required": true,
+      "min": 0
+    },
+    "clientRole": {
+      "type": "string",
+      "required": true,
+      "default": "Authenticated"
     }
   }
 }

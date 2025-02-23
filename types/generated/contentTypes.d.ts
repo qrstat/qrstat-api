@@ -425,6 +425,10 @@ export interface ApiPollPoll extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<"oneToMany", "api::poll.poll"> &
       Schema.Attribute.Private;
+    owner: Schema.Attribute.Relation<
+      "oneToOne",
+      "plugin::users-permissions.user"
+    >;
     publishedAt: Schema.Attribute.DateTime;
     responses: Schema.Attribute.Relation<"oneToMany", "api::response.response">;
     title: Schema.Attribute.String & Schema.Attribute.Required;
@@ -924,10 +928,12 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    clientRole: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<"Authenticated">;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
@@ -944,6 +950,15 @@ export interface PluginUsersPermissionsUser
       "plugin::users-permissions.user"
     > &
       Schema.Attribute.Private;
+    maxPolls: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<3>;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{

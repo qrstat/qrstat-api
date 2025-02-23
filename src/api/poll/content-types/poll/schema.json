@@ -34,6 +34,12 @@
       "relation": "oneToMany",
       "target": "api::answer-option.answer-option",
       "mappedBy": "poll"
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "polls"
     }
   }
 }
