@@ -15,9 +15,15 @@ export default factories.createCoreController(
 
       const { data } = ctx.request.body;
 
+      const { affirmativeText, negativeText, ...pollData } = data;
+
+      if (!affirmativeText || !negativeText) {
+        return ctx.badRequest("Title and description are required.");
+      }
+
       const poll = await strapi.entityService.create("api::poll.poll", {
         data: {
-          ...data,
+          ...pollData,
           userId: user.id,
         },
       });
@@ -25,7 +31,7 @@ export default factories.createCoreController(
       const answerOptions = await Promise.all([
         strapi.entityService.create("api::answer-option.answer-option", {
           data: {
-            text: "Yes",
+            text: affirmativeText || "Yes",
             type: "affirmative",
             poll: poll.id,
             userId: user.id,
@@ -33,7 +39,7 @@ export default factories.createCoreController(
         }),
         strapi.entityService.create("api::answer-option.answer-option", {
           data: {
-            text: "No",
+            text: negativeText || "No",
             type: "negative",
             poll: poll.id,
             userId: user.id,
