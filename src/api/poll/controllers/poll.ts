@@ -28,26 +28,7 @@ export default factories.createCoreController(
         },
       });
 
-      const answerOptions = await Promise.all([
-        strapi.entityService.create("api::answer-option.answer-option", {
-          data: {
-            text: affirmativeText || "Yes",
-            type: "affirmative",
-            poll: poll.id,
-            userId: user.id,
-          },
-        }),
-        strapi.entityService.create("api::answer-option.answer-option", {
-          data: {
-            text: negativeText || "No",
-            type: "negative",
-            poll: poll.id,
-            userId: user.id,
-          },
-        }),
-      ]);
-
-      return ctx.send({ poll, answerOptions });
+      return ctx.send({ poll });
     },
 
     async find(ctx) {
