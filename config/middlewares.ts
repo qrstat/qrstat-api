@@ -10,4 +10,14 @@ export default [
   "strapi::favicon",
   "strapi::public",
   { resolve: "./src/middlewares/role-update" },
+  {
+    name: "strapi::cors",
+    config: {
+      enabled: true,
+      headers: "*",
+      origin: ["http://localhost:3000"], // Укажите нужный порт
+      methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      credentials: true,
+    },
+  },
 ];
