@@ -8,7 +8,11 @@
     "deploy": "strapi deploy",
     "dev": "strapi develop",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "build:package:dev": "docker build --build-arg NODE_ENV=development -t strapi:latest -f Dockerfile .",
+    "build:package:prod": "docker build --build-arg NODE_ENV=production -t strapi:latest -f Dockerfile.prod .",
+    "start:package": "docker-compose up",
+    "stop:package": "docker-compose down"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.9.0",
