@@ -6,6 +6,7 @@ RUN echo "http://mirror.yandex.ru/mirrors/alpine/v3.21/main" > /etc/apk/reposito
 RUN apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev git
 ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
+ENV npm_config_disturl https://nodejs.org/dist/
 
 WORKDIR /opt/
 COPY package.json yarn.lock ./
