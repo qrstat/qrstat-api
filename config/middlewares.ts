@@ -15,9 +15,8 @@ export default [
     config: {
       enabled: true,
       headers: "*",
-      origin: ["http://localhost:3000"], // Укажите нужный порт
+      origin: ["http://qrnx.ru"], // Укажи домен фронтенда
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-      credentials: true,
     },
   },
 ];
