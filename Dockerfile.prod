@@ -23,11 +23,13 @@ FROM node:18-alpine
 RUN echo "http://mirror.yandex.ru/mirrors/alpine/v3.21/main" > /etc/apk/repositories && \
   echo "http://mirror.yandex.ru/mirrors/alpine/v3.21/community" >> /etc/apk/repositories && \
   apk update
-RUN apk add --no-cache vips-dev
+RUN apk add --no-cache vips vips-dev
 ENV NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
+ENV npm_config_disturl https://nodejs.org/dist/
 WORKDIR /opt/
 COPY --from=build /opt/node_modules ./node_modules
+RUN yarn rebuild sharp
 WORKDIR /opt/app
 COPY --from=build /opt/app ./
 ENV PATH=/opt/node_modules/.bin:$PATH
