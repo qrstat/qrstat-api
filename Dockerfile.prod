@@ -35,9 +35,9 @@ COPY --from=build /opt/app ./
 ENV PATH=/opt/node_modules/.bin:$PATH
 
 USER root
-RUN chown -R node:node /opt/app
-RUN chown -R node:node /opt/app/src/extensions
-RUN chmod -R 755 /opt/app/src/extensions
-USER node
+# RUN chown -R node:node /opt/app
+# RUN chown -R node:node /opt/app/src/extensions
+# RUN chmod -R 755 /opt/app/src/extensions
+# USER node
 EXPOSE 1337
 CMD ["yarn", "start"]
