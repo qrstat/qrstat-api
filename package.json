@@ -11,6 +11,8 @@
     "strapi": "strapi",
     "build:package:dev": "docker build --build-arg NODE_ENV=development -t strapi:latest -f Dockerfile .",
     "build:package:prod": "docker build --build-arg NODE_ENV=production -t strapi:latest -f Dockerfile.prod .",
+    "start:package:dev": "IMAGE_NAME=strapi:dev-latest docker-compose -f docker-compose.yml up --build",
+    "start:package:prod": "IMAGE_NAME=strapi:prod-latest docker-compose -f docker-compose.prod.yml up --build -d",
     "start:package": "docker-compose up",
     "stop:package": "docker-compose down"
   },
