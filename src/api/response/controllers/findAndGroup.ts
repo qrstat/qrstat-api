@@ -88,7 +88,7 @@ export const findAndGroupMonth = async (id) => {
   return results;
 };
 
-export const fillMissingDates = (data: any[], daysBack = 7) => {
+export const fillMissingDates = (data: any[], daysBack = 6) => {
   const allDates: {
     response_date: string;
     affirmative: number;
@@ -268,8 +268,28 @@ export const findAndGroupAllTime = async (id) => {
           affirmative: existingEntry.affirmative,
           negative: existingEntry.negative,
         }
-      : { formattedDate, affirmative: 0, negative: 0 };
+      : { response_date: formattedDate, affirmative: 0, negative: 0 };
   });
 
   return formattedResults;
+};
+
+export const normalizeData = (
+  data: {
+    response_date: string;
+    affirmative: number;
+    negative: number;
+  }[],
+) => {
+  return data.map((entry) => {
+    const total = entry.affirmative + entry.negative;
+    const affirmativeRate = total === 0 ? 0 : entry.affirmative / total;
+    const negativeRate = total === 0 ? 0 : entry.negative / total;
+
+    return {
+      ...entry,
+      affirmative: affirmativeRate.toFixed(2),
+      negative: negativeRate.toFixed(2),
+    };
+  });
 };

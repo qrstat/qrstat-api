@@ -9,6 +9,7 @@ import {
   findAndGroupMonth,
   findAndGroupWeek,
   findAndGroupYear,
+  normalizeData,
 } from "./findAndGroup";
 import { TimeIntervals } from "../../../../types/timeIntervals";
 
@@ -45,9 +46,15 @@ export default factories.createCoreController(
     },
 
     async find(ctx) {
-      const { pollID, timeInterval } = ctx.query;
+      const {
+        pollId,
+        timeInterval,
+        isNormalized: isNormalizedString,
+      } = ctx.query;
 
-      if (!pollID) return ctx.badRequest("Poll ID is required");
+      const isNormalized = isNormalizedString === "true";
+
+      if (!pollId) return ctx.badRequest("Poll ID is required");
       if (!timeInterval) return ctx.badRequest("Time interval is required");
       if (
         !Object.values(TimeIntervals).includes(timeInterval as TimeIntervals)
@@ -62,7 +69,7 @@ export default factories.createCoreController(
       };
 
       const { id } = await strapi.db.query("api::poll.poll").findOne({
-        where: { documentId: pollID },
+        where: { documentId: pollId },
         select: ["id"],
       });
 
@@ -71,17 +78,25 @@ export default factories.createCoreController(
       switch (timeInterval) {
         case TimeIntervals.WEEK: {
           const data = await findAndGroupWeek(id);
-          return fillMissingDates(data);
+          const filledData = fillMissingDates(data);
+
+          return isNormalized ? normalizeData(filledData) : filledData;
         }
         case TimeIntervals.MONTH: {
           const data = await findAndGroupMonth(id);
-          return fillMissingDates(data, 30);
+          const filledData = fillMissingDates(data, 30);
+
+          return isNormalized ? normalizeData(filledData) : filledData;
         }
         case TimeIntervals.YEAR: {
-          return findAndGroupYear(id);
+          const data = await findAndGroupYear(id);
+
+          return isNormalized ? normalizeData(data) : data;
         }
         case TimeIntervals.ALL: {
-          return findAndGroupAllTime(id);
+          const data = await findAndGroupAllTime(id);
+
+          return isNormalized ? normalizeData(data) : data;
         }
         default:
           return ctx.badRequest(
