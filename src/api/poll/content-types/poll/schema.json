@@ -40,6 +40,21 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "polls"
+    },
+    "totalResponses": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    },
+    "affirmativeResponses": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    },
+    "negativeResponses": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
     }
   }
 }

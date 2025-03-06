@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-03-05T11:30:29.564Z"
+    "x-generation-date": "2025-03-06T09:13:28.213Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -3836,6 +3836,15 @@
                   }
                 }
               },
+              "totalResponses": {
+                "type": "integer"
+              },
+              "affirmativeResponses": {
+                "type": "integer"
+              },
+              "negativeResponses": {
+                "type": "integer"
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -4016,6 +4025,15 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "totalResponses": {
+                "type": "integer"
+              },
+              "affirmativeResponses": {
+                "type": "integer"
+              },
+              "negativeResponses": {
+                "type": "integer"
               },
               "locale": {
                 "type": "string"
@@ -4744,6 +4762,15 @@
                         }
                       }
                     },
+                    "totalResponses": {
+                      "type": "integer"
+                    },
+                    "affirmativeResponses": {
+                      "type": "integer"
+                    },
+                    "negativeResponses": {
+                      "type": "integer"
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -4889,6 +4916,15 @@
                 "type": "string"
               }
             }
+          },
+          "totalResponses": {
+            "type": "integer"
+          },
+          "affirmativeResponses": {
+            "type": "integer"
+          },
+          "negativeResponses": {
+            "type": "integer"
           },
           "createdAt": {
             "type": "string",
@@ -5766,6 +5802,15 @@
                     }
                   }
                 }
+              },
+              "totalResponses": {
+                "type": "integer"
+              },
+              "affirmativeResponses": {
+                "type": "integer"
+              },
+              "negativeResponses": {
+                "type": "integer"
               },
               "createdAt": {
                 "type": "string",
