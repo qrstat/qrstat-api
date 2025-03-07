@@ -17,7 +17,7 @@ export const findAndGroupWeek = async (id) => {
       "answer_options.id",
     )
     .where("responses_poll_lnk.poll_id", id)
-    .whereRaw("responses.created_at >= NOW() - INTERVAL '6 days'")
+    .whereRaw("responses.created_at >= NOW() - ?::interval", ["6 days"])
     .select(
       strapi.db.connection.raw(
         "TO_CHAR(responses.created_at, 'DD.MM.YYYY') AS response_date",
