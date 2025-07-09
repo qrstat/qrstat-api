@@ -15,7 +15,7 @@ export default [
     config: {
       enabled: true,
       headers: "*",
-      origin: ["http://qrnx.ru"], // Укажи домен фронтенда
+      origin: ["http://qrstat.ru"], // Укажи домен фронтенда
       methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     },
   },
